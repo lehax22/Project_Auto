@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Регистрация</title>
+		<meta charset="UTF-8">
+		<link rel = "stylesheet" href = "css/bootstrap.css">
+		<link rel = "stylesheet" href = "css/style_signup.css"> 
+		<script type="text/javascript">
+			$(function () {
+				$('#datetimepicker1').datetimepicker(
+  					{pickTime: false, language: 'ru'}
+				);
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="row">
+				<img src="img/logo.jpg">
+				<h3>Header</h3>
+			</div>
+		</div>
+		<div class="substrate">
+			<div class="wrapper">
+				<h4>Регистрация</h4>
+				<form role="form">
+					<div class="form-group">
+					  	<label for="login">Логин</label>
+					  	<input type="login" class="form-control" id="login" placeholder="Введите логин">
+					</div>
+					<div class="form-group">
+					  	<label for="pass">Пароль</label>
+					  	<input type="password" class="form-control" id="pass" placeholder="Введите пароль">
+					 
+					</div>
+					<div class="form-group">
+					  	<input type="password" class="form-control" id="pass1" placeholder="Введите пароль еще раз">
+					</div>
+					<div class="form-group">
+					  	<label for="pass">Имя</label>
+					  	<input type="name" class="form-control" id="name" placeholder="Введите имя">
+					</div>
+					<div class="form-group">
+					  	<label for="surname">Фамилия</label>
+					  	<input type="surname" class="form-control" id="surname" placeholder="Введите фамилию">
+					</div>
+					<div class="form-group">
+					  	<label class="radio-inline"><input type="radio" name="optradio">Мужчина</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Женщина</label>
+					</div>
+					<div class="form-group">
+						<label for="login">Дата рождения</label>
+						<div class="input-group date" id="datetimepicker1">
+		    				<input type="text" class="form-control" />
+		    				<span class="input-group-addon">
+		     				<span class="glyphicon glyphicon-calendar"></span>
+		    				</span>
+		  				</div>
+					</div>
+					<div class="form-group">
+					  	<label for="experience">Стаж</label>
+					  	<input type="experience" class="form-control" id="experience" placeholder="Укажите стаж вождения (в годах)">
+					</div>
+					<div class="form-group">
+						<label for="cars">Личные автомобили</label>
+					  	<textarea class="input-xlarge" id="cars" rows="3" placeholder="Укажите здесь имеющиеся у вас личные автомобили"></textarea>
+					</div>
+
+
+					
+					<button type="submit" class="btn btn-success">Зарегистрироваться</button>
+					</form>
+			</div>
+		</div>
+
+
+	</body>
+</html>

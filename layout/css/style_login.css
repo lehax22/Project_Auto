@@ -1,0 +1,31 @@
+.header{
+	background-color: #313140; 
+	padding: 20px 231px;
+}
+h3{
+	line-height: 40px;
+	color: white;
+}
+img{
+	float: left;
+	margin-right: 43px;
+}
+.substrate {
+	margin: 0 auto;
+	width: 70%;
+	background-color: #C1C1D0;
+	text-align: center;
+	height: 800px;
+}
+.wrapper{
+	width: 40%;
+	margin:0 auto;
+	padding: 40px 0;
+}
+h4{
+	margin-bottom: 20px;
+	font-size: 30px;
+}
+.row{
+	margin-top: 24px;
+}
