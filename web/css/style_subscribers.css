@@ -1,0 +1,19 @@
+
+.col-md-5 > div {
+  margin-bottom: 10px;
+}
+
+p.nickname-small {
+  font-size: 16px;
+}
+
+.subscriber {
+  height: 200px;
+  margin: 0 20px 11px;
+  padding: 15px 0;
+  border-bottom: 1px solid #92b8d8;
+}
+
+.fl-left {
+  float: left;
+}

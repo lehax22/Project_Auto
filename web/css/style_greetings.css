@@ -1,0 +1,64 @@
+
+@font-face {
+	font-family: "Ubuntu";
+	src: url("../fonts/Ubuntu-L.ttf");
+}
+body{
+	background-image: url(../img/background1.jpg);
+	font-family: "Ubuntu";
+}
+.substrate {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 83%;
+	text-align: center;
+	height: 800px;
+}
+.btns {
+	margin-top: 0px;
+}
+.header{
+	opacity: 0.8;
+	padding: 20px 231px;
+	background-color: #3d4854;
+	height: 60px;
+}
+img{
+	float: left;
+	margin-right: 43px;
+}
+h1 {
+	margin-bottom: 30px;
+	margin-top: 140px;
+	font-size: 47px;
+}
+hr{
+	width: 84%;
+	margin: 0 auto;
+}
+.btn-link{
+	font-color: white;
+}
+.car{
+	margin: 0 auto;
+
+}
+
+.row:first-child{
+	margin-top: -40px;
+}
+h3{
+	line-height: 40px;
+	color: white;
+}
+.guest{
+	color:white;
+	margin-top: 8px;
+}
+
+a:hover{
+	color: white;
+}
+.btn:hover{
+	color: white;
+}
