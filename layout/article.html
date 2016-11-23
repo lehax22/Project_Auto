@@ -103,7 +103,8 @@
         </div>
         <div class="new-comment row">
           <div class="col-xs-12">
-            <textarea></textarea>
+            <textarea name="textarea" id="textarea" onclick="length_check(200, 'textarea', 'counter')" onkeyup="length_check(200, 'textarea', 'counter')"></textarea>
+            Осталось символов: <span id="counter"200 / 200</span>
           </div>
           <div class="col-xs-12">
             <button class="btn btn-info fl-right">Отправить</button>
@@ -111,5 +112,20 @@
         </div>
       </div>
     </div>
+
+<script language=JavaScript type="text/javascript">
+function length_check(len_max, field_id, counter_id) {
+  var len_current = document.getElementById(field_id).value.length;
+  var rest = len_max - len_current;
+  if (len_current > len_max )
+  { document.getElementById(field_id).value =
+    document.getElementById(field_id).value.substr (0, len_max);
+    if (rest < 0) { rest = 0;}
+    document.getElementById(counter_id).firstChild.data = rest + ' / ' + len_max;
+    alert('Максимальное количество символов в комментарии: ' + len_max + ' символа(-ов)');  }
+  else
+  { document.getElementById(counter_id).firstChild.data = rest + ' / ' + len_max; }
+}
+</script>
   </body>
 </html>
