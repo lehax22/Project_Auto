@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by Alex on 18.11.2016.
+ * Created by Alex on 24.11.2016.
  */
-public class HelloServlet extends HttpServlet {
-
+public class LogOutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        new Render().render(request, response, "hello.ftl", null);
+        request.getSession().removeAttribute("current_user");
+        new Render().render(request, response, "main.ftl", null);
     }
 }

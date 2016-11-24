@@ -18,20 +18,41 @@
     <div class="col-md-2 grey-menu">
         <ul class="nav nav-pills nav-stacked">
             <li>
-                <a href="/main">Main</a>
+            <#if current_user??>
+                <a href="/main?id=${current_user.id}">Main</a>
+            <#else>
+                <a href="/login">Main</a>
+            </#if>
             </li>
             <li>
                 <a href="#">Interesting</a>
             </li>
             <li>
-                <a href="/myprofile">My profile</a>
+            <#if current_user??>
+                <a href="/myprofile?id=${current_user.id}">My profile</a>
+            <#else>
+                <a href="/login">My profile</a>
+            </#if>
             </li>
             <li>
-                <a href="#">My messages</a>
+            <#if current_user??>
+                <a href="/messages?id=${current_user.id}">My messages</a>
+            <#else>
+                <a href="/login">My messages</a>
+            </#if>
             </li>
             <li>
                 <a href="#">My articles</a>
             </li>
+        <#if current_user??>
+            <li>
+                <a href="/exit">Exit</a>
+            </li>
+        <#else>
+            <li>
+                <a href="/login">Log in</a>
+            </li>
+        </#if>
     </div>
     <div class="substrate">
         <div class="row">

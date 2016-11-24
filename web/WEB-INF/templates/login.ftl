@@ -16,14 +16,14 @@
 <div class="substrate">
     <div class="wrapper">
         <h4>Login</h4>
-        <form role="form">
+        <form role="form" method="post" action="/login">
             <div class="form-group">
                 <label for="login">Login</label>
-                <input type="login" class="form-control" id="login" placeholder="Enter login">
+                <input type="text" name="username" class="form-control" id="login" placeholder="Enter login">
             </div>
             <div class="form-group">
                 <label for="pass">Password</label>
-                <input type="password" class="form-control" id="pass" placeholder="Enter password">
+                <input type="password" name="password" class="form-control" id="pass" placeholder="Enter password">
 
                 <div class="row">
                     <button type="submit" class="btn btn-success">Log in</button>

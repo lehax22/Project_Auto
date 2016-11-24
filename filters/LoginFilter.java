@@ -1,6 +1,9 @@
 package filters;
 
-import services.CookieServiceImpl;
+import entity.User;
+import helpers.CookieHelper;
+import services.UserServiceImpl;
+import services.interf.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -8,25 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by Alex on 14.11.2016.
+ * Created by Alex on 18.11.2016.
  */
 public class LoginFilter implements Filter {
 
-    private CookieServiceImpl cookieService = new CookieServiceImpl();
+    private UserService userService = new UserServiceImpl();
 
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        HttpServletRequest request = (HttpServletRequest)req;
-        HttpServletResponse response = (HttpServletResponse)resp;
-        if (!cookieService.checkCookies(request.getCookies())) {
-            response.addCookie(cookieService.createCookie());
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) resp;
+        String username = (String)request.getSession().getAttribute("current_user");
+        if (username == null) {
+            chain.doFilter(req, resp);
+        } else {
+            response.sendRedirect("/myprofile?id=" + userService.getUser(username).getId());
         }
-        if (request.getSession().getAttribute("current_user") != null) {
-            response.sendRedirect("/myprofile");
-        }
-        chain.doFilter(req, resp);
     }
 
     public void init(FilterConfig config) throws ServletException {

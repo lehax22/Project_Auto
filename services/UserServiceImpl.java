@@ -1,47 +1,51 @@
 package services;
 
 import dao.UserDaoImpl;
-import entity.Auth;
+import dao.interf.UserDao;
 import entity.User;
-import helpers.MD5UtilImpl;
+import services.interf.UserService;
 
 /**
- * Created by Alex on 14.11.2016.
+ * Created by Alex on 18.11.2016.
  */
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
-    private UserDaoImpl userDao = new UserDaoImpl();
-    private MD5UtilImpl md5Util = new MD5UtilImpl();
-    private Auth auth;
+    private UserDao userDao = new UserDaoImpl();
 
     @Override
-    public Auth getDataUser(String username) {
-        return userDao.getADataUser(username);
+    public User getUser(String username, String password) {
+        User user = userDao.getUser(username, password);
+        if (user != null) {
+            return user;
+        }
+        return null;
     }
 
     @Override
-    public boolean checkUN(String login, String ulogin) {
-        return login.equals(ulogin);
-    }
-
-    @Override
-    public boolean checkPW(String password, String upassword) {
-        return md5Util.md5Custom(upassword).equals(password);
-    }
-
-    @Override
-    public boolean checkUserName(String username) {
-        auth = userDao.getUserName(username);
-        return (auth == null);
+    public User getUser(String current_user) {
+        User user = userDao.getUser(current_user);
+        if (user != null) {
+            return user;
+        }
+        return null;
     }
 
     @Override
     public void createNewUser(String username, String password, String lastName, String firstName, String male, String date, String exp, String cars) {
-        userDao.createNewUser(username, md5Util.md5Custom(password), lastName, firstName, male, date, exp, cars);
+        userDao.createNewUser(username, password, lastName, firstName, male, date, exp, cars);
     }
 
     @Override
-    public User getAllDataUser(String username) {
-        return userDao.getAllDataUser(username);
+    public User getUser(Integer id) {
+        User user = userDao.getUser(id);
+        if (user != null) {
+            return user;
+        }
+        return null;
+    }
+
+    @Override
+    public void changeUser(User user) {
+        userDao.changeUser(user);
     }
 }

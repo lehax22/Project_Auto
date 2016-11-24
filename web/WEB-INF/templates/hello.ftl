@@ -9,7 +9,7 @@
 <body>
 <div class="header">
     <div class="row">
-        <img src="img/logo.jpg">
+        <img src="/img/logo.jpg">
         <h3>Header</h3>
     </div>
 </div>
@@ -22,7 +22,7 @@
         <button type="button" class="btn btn-warning btn-lg" onclick='location.href="regis"'>Sign up</button>
         <button type="button" class="btn btn-default btn-lg" onclick='location.href="login"'>Sign in</button>
     </div>
-    <a type="button" class="btn btn-link row guest" onclick='location.href="a-myprofile"'>Guest mode</a>
+    <a type="button" class="btn btn-link row guest" onclick='location.href="main"'>Guest mode</a>
 
 </div>
 

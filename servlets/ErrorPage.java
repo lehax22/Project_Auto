@@ -11,13 +11,12 @@ import java.io.IOException;
 /**
  * Created by Alex on 18.11.2016.
  */
-public class HelloServlet extends HttpServlet {
-
+public class ErrorPage extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        new Render().render(request, response, "hello.ftl", null);
+        new Render().render(request, response, "error.ftl", null);
     }
 }

@@ -10,9 +10,9 @@ import java.io.IOException;
 /**
  * Created by Alex on 18.11.2016.
  */
-public class HelloFilter implements Filter {
+public class CookieFilter implements Filter {
 
-    private CookieHelper cookieHelper = new CookieHelper();
+    public CookieHelper cookieHelper = new CookieHelper();
 
     public void destroy() {
     }

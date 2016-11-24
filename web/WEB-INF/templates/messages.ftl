@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <link rel = "stylesheet" href = "/css/bootstrap.css">
     <link rel = "stylesheet" href = "/css/style_user_profile.css">
+    <link rel="stylesheet" href="/css/style_main.css">
+    <link rel="stylesheet" href="/css/style_article.css">
 </head>
 <body>
 <div class="header">
@@ -52,43 +54,32 @@
             </li>
         </#if>
     </div>
-    <div class="substrate">
-
-        <div class="col-md-5 padding-t-90">
-            <div class="nickname"><p>${user.login}</p></div>
-            <div>
-                <p>${user.lastname}</p>
-                <p>${user.firstname}</p>
-            </div>
-            <div>
-                <p>${user.male}</p>
-                <p>${user.date}</p>
-            </div>
-            <div><p><span><b>Experience: </b></span>${user.driving_stage} years</p></div>
-            <div><p>Personal cars:</p></div>
-            <p>${user.car}</p>
-            <!--<p>Toyota Land Cruiser 100</p>-->
-
-        </div>
-        <div class="col-md-3 padding-t-120">
-            <div class="links">
-                <div class="row">
-                <#if current_user??>
-                    <a href="/subscription?id=${current_user.id}">Subscriptions</a>
-                <#else>
-                    <a href="/main">Subscriptions</a>
-                </#if>
-                <div class="row">
-                <#if current_user??>
-                    <a href="/subscribers?id=${current_user.id}">Subscribers</a>
-                <#else>
-                    <a href="/main">Subscribers</a>
-                </#if>
+    <div class="substrate container-fluid">
+        <div class="row">
+        <#if messages?has_content>
+        <#list messages as message>
+                <a class="comment col-xs-12" href="#">
+                    <div class="row">
+                        <img src="/img/user.png" class="avatar">
+                        <div class="col-xs-6">
+                            <h6 class="text-left"> ${message.send} </h6>
+                        </div>
+                        <div class="col-xs-6">
+                            <h6 class="text-right"> last: ${message.time} </h6>
+                        </div>
+                        <div class="col-xs-12">
+                            <p>${message.content}</p>
+                        </div>
                 </div>
-                <div class="row"><a href="/redactor?id=${current_user.id}">Redactor</a></div>
+            </a>
+            <div class="col-xs-12">
+                <div class="separator"></div>
             </div>
+        </#list>
+            <#else>
+            <p align="center">List empthy</p>
+        </#if>
         </div>
     </div>
-</div>
 </body>
 </html>

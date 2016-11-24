@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel = "stylesheet" href = "/css/bootstrap.css">
     <link rel = "stylesheet" href = "/css/style_user_profile.css">
+    <link rel = "stylesheet" href = "/css/style_subscribers.css">
 </head>
 <body>
 <div class="header">
@@ -53,41 +54,38 @@
         </#if>
     </div>
     <div class="substrate">
-
-        <div class="col-md-5 padding-t-90">
-            <div class="nickname"><p>${user.login}</p></div>
-            <div>
-                <p>${user.lastname}</p>
-                <p>${user.firstname}</p>
-            </div>
-            <div>
-                <p>${user.male}</p>
-                <p>${user.date}</p>
-            </div>
-            <div><p><span><b>Experience: </b></span>${user.driving_stage} years</p></div>
-            <div><p>Personal cars:</p></div>
-            <p>${user.car}</p>
-            <!--<p>Toyota Land Cruiser 100</p>-->
-
-        </div>
-        <div class="col-md-3 padding-t-120">
-            <div class="links">
-                <div class="row">
-                <#if current_user??>
-                    <a href="/subscription?id=${current_user.id}">Subscriptions</a>
-                <#else>
-                    <a href="/main">Subscriptions</a>
-                </#if>
-                <div class="row">
-                <#if current_user??>
-                    <a href="/subscribers?id=${current_user.id}">Subscribers</a>
-                <#else>
-                    <a href="/main">Subscribers</a>
-                </#if>
+    <#if users?has_content>
+    <#list users as user>
+        <div class="subscriber">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="user-img-small"src="/img/user.png">
+                    <div><p class="text-center nickname-small">${user.login}</p></div>
                 </div>
-                <div class="row"><a href="/redactor?id=${current_user.id}">Redactor</a></div>
+                <div class="col-md-5">
+                    <div>
+                        <p>${user.lastname}</p>
+                        <p>${user.firstname}</p>
+                    </div>
+                    <div>
+                        <p>${user.male}</p>
+                        <p>${user.date}</p>
+                    </div>
+                    <div>
+                        <p><span><b>Experience: </b></span>${user.driving_stage} years</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div><p>Personal cars:</p></div>
+                    <p>${user.car}</p>
+                    <!--<p>Toyota Land Cruiser 100</p>-->
+                </div>
             </div>
         </div>
+        </#list>
+        <#else>
+            I'm sorry! The list is empty!
+    </#if>
     </div>
 </div>
 </body>

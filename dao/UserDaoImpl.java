@@ -1,8 +1,8 @@
 package dao;
 
-import entity.Auth;
+import coonhelp.DBConnectionHelper;
+import dao.interf.UserDao;
 import entity.User;
-import helpers.DBConnectionHelper;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,82 +10,115 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Created by Alex on 14.11.2016.
+ * Created by Alex on 18.11.2016.
  */
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
-    private Connection conn = DBConnectionHelper.getConn();
-    private Auth auth;
+    private Connection connection = DBConnectionHelper.getConn();
     private User user;
 
     @Override
-    public Auth getADataUser(String username) {
+    public User getUser(String username, String password) {
         try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(
-                    "SELECT * FROM users WHERE login = '" + username + "'"
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT * FROM users WHERE login = '" + username + "' AND password = '" + password + "'"
             );
-            while (rs.next()) {
-                auth = new Auth(rs.getInt("id"),rs.getString("login"), rs.getString("password"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return auth;
-    }
-
-    @Override
-    public Auth getUserName(String username) {
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(
-                    "SELECT login FROM users WHERE login ='" + username + "'"
-            );
-            while (rs.next()) {
-                auth = new Auth(rs.getString("login"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return auth;
-    }
-
-    @Override
-    public void createNewUser(String username, String s, String lastName, String firstName, String male, String date, String exp, String cars) {
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(
-                    "insert into users(\"login\", \"password\", \"path_to_the_photo\", \"firstname\", \"lastname\", \"male\", \"birthdate\", \"driving_stage\", \"car\") values ('" + username + "', '" + s + "', 'img/src', '" + firstName + "', '" + lastName + "', '" + male + "', cast('" + date + "' as date), '" + exp + "', '" + cars + "');"
-            );
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public User getAllDataUser(String username) {
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(
-                    "SELECT * FROM users WHERE login ='" + username + "'"
-            );
-            while (rs.next()) {
+            while (resultSet.next()) {
                 user = new User(
-                        rs.getInt("id"),
-                        rs.getString("login"),
-                        rs.getString("password"),
-                        rs.getString("path_to_the_photo"),
-                        rs.getString("firstname"),
-                        rs.getString("lastname"),
-                        rs.getString("male"),
-                        rs.getString("birthdate"),
-                        rs.getInt("driving_stage"),
-                        rs.getString("car")
+                        resultSet.getLong("id"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password"),
+                        resultSet.getString("path_to_the_photo"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("male"),
+                        resultSet.getString("birthdate"),
+                        resultSet.getInt("driving_stage"),
+                        resultSet.getString("car")
                 );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public User getUser(String username) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT * FROM users WHERE login = '" + username + "'"
+            );
+            while (resultSet.next()) {
+                user = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password"),
+                        resultSet.getString("path_to_the_photo"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("male"),
+                        resultSet.getString("birthdate"),
+                        resultSet.getInt("driving_stage"),
+                        resultSet.getString("car")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    @Override
+    public void createNewUser(String username, String password, String lastName, String firstName, String male, String date, String exp, String cars) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeQuery(
+                    "insert into users(\"login\", \"password\", \"path_to_the_photo\", \"firstname\", \"lastname\", \"male\", \"birthdate\", \"driving_stage\", \"car\") values ('" + username + "', '" + password + "', 'img/src', '" + firstName + "', '" + lastName + "', '" + male + "', cast('" + date + "' as date), '" + exp + "', '" + cars + "');"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User getUser(Integer id) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT * FROM users WHERE id = '" + id.toString() + "'"
+            );
+            while (resultSet.next()) {
+                user = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password"),
+                        resultSet.getString("path_to_the_photo"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("male"),
+                        resultSet.getString("birthdate"),
+                        resultSet.getInt("driving_stage"),
+                        resultSet.getString("car")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    @Override
+    public void changeUser(User user) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeQuery(
+                    "UPDATE users SET login = '" + user.getLogin() + "', password = '" + user.getPassword() + "' , firstname = '" + user.getFirstname() + "', lastname = '" + user.getMale() + "', birthdate = '" + user.getDate() + "', driving_stage = '" + user.getStrDriving_stage() + "', car = '" + user.getCar() + "' WHERE id = '" + user.getId() + "';"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

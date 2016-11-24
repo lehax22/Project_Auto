@@ -37,6 +37,10 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/login</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/regis</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>RegServlet</servlet-name>
@@ -46,65 +50,6 @@
         <servlet-name>RegServlet</servlet-name>
         <url-pattern>/regis</url-pattern>
     </servlet-mapping>
-    <filter>
-        <filter-name>RegFilter</filter-name>
-        <filter-class>filters.RegFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>RegFilter</filter-name>
-        <url-pattern>/regis</url-pattern>
-    </filter-mapping>
-
-    <servlet>
-        <servlet-name>MainSerlet</servlet-name>
-        <servlet-class>servlets.MainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MainSerlet</servlet-name>
-        <url-pattern>/main</url-pattern>
-    </servlet-mapping>
-    <filter>
-        <filter-name>MainFilter</filter-name>
-        <filter-class>filters.MainFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>MainFilter</filter-name>
-        <url-pattern>/main</url-pattern>
-    </filter-mapping>
-
-    <servlet>
-        <servlet-name>ArtServlet</servlet-name>
-        <servlet-class>servlets.ArtServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ArtServlet</servlet-name>
-        <url-pattern>/article</url-pattern>
-    </servlet-mapping>
-    <filter>
-        <filter-name>ArtFilter</filter-name>
-        <filter-class>filters.ArtFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>ArtFilter</filter-name>
-        <url-pattern>/article</url-pattern>
-    </filter-mapping>
-
-    <servlet>
-        <servlet-name>AProfServlet</servlet-name>
-        <servlet-class>servlets.AProfServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AProfServlet</servlet-name>
-        <url-pattern>/a-myprofile</url-pattern>
-    </servlet-mapping>
-    <filter>
-        <filter-name>AProfFilter</filter-name>
-        <filter-class>filters.AProfFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>AProfFilter</filter-name>
-        <url-pattern>/a-myprofile</url-pattern>
-    </filter-mapping>
 
     <servlet>
         <servlet-name>MPServlet</servlet-name>
@@ -114,12 +59,80 @@
         <servlet-name>MPServlet</servlet-name>
         <url-pattern>/myprofile</url-pattern>
     </servlet-mapping>
-    <filter>
-        <filter-name>MPFilter</filter-name>
-        <filter-class>filters.MPFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>MPFilter</filter-name>
-        <url-pattern>/myprofile</url-pattern>
-    </filter-mapping>
+
+    <servlet>
+        <servlet-name>ErrorPage</servlet-name>
+        <servlet-class>servlets.ErrorPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorPage</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error</location>
+    </error-page>
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>servlets.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyMessServlet</servlet-name>
+        <servlet-class>servlets.MyMessServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyMessServlet</servlet-name>
+        <url-pattern>/messages</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FolServlet</servlet-name>
+        <servlet-class>servlets.FolServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FolServlet</servlet-name>
+        <url-pattern>/subscribers</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SubServlet</servlet-name>
+        <servlet-class>servlets.SubServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubServlet</servlet-name>
+        <url-pattern>/subscription</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>servlets.LogOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UnFollowServlet</servlet-name>
+        <servlet-class>servlets.UnFollowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnFollowServlet</servlet-name>
+        <url-pattern>/unfollow</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RedServlet</servlet-name>
+        <servlet-class>servlets.RedServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RedServlet</servlet-name>
+        <url-pattern>/redactor</url-pattern>
+    </servlet-mapping>
 </web-app>
